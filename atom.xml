@@ -4,7 +4,7 @@
   <title><![CDATA[Mobile]]></title>
   <link href="http://skyisle.github.io/atom.xml" rel="self"/>
   <link href="http://skyisle.github.io/"/>
-  <updated>2014-03-16T23:55:27+09:00</updated>
+  <updated>2014-03-17T00:25:57+09:00</updated>
   <id>http://skyisle.github.io/</id>
   <author>
     <name><![CDATA[Alan Jeon]]></name>
@@ -14,13 +14,10 @@
 
   
   <entry>
-    
     <title type="html"><![CDATA[WILDCARD 문제]]></title>
     <link href="http://skyisle.github.io/blog/2014/03/16/sae-beulrogeu/"/>
-    
     <updated>2014-03-16T22:44:30+09:00</updated>
     <id>http://skyisle.github.io/blog/2014/03/16/sae-beulrogeu</id>
-    
     <content type="html"><![CDATA[<p>항상 시작은 즐겁다.</p>
 
 <figure class='code'><figcaption><span>test.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -98,7 +95,6 @@
 </span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
-    
   </entry>
   
 </feed>
