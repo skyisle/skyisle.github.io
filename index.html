@@ -9,43 +9,8 @@
   <meta name="author" content="Alan Jeon">
 
   
-  <meta name="description" content="항상 시작은 즐겁다. test.py1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-#!/usr/bin/env python cache &hellip;">
+  <meta name="description" content="얼마전 Xcode가 업데이트 되면서 clang 버전도 Apple LLVM version 5.1 (clang-503.0.38) (based on LLVM 3.4svn) 로 업데으트 되었다.
+그러면서 안드로이드 컴파일시에 못보던 에러가 보이기 시작했다. clang: &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -98,6 +63,71 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/03/22/wunused-command-line-argument-hard-error-in-future-munje/">-Wunused-command-line-argument-hard-error-in-future 문제</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-22T17:27:22+09:00" pubdate data-updated="true">Mar 22<span>nd</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>얼마전 Xcode가 업데이트 되면서 clang 버전도 Apple LLVM version 5.1 (clang-503.0.38) (based on LLVM 3.4svn) 로 업데으트 되었다.
+그러면서 안드로이드 컴파일시에 못보던 에러가 보이기 시작했다.</p>
+
+<pre><code>clang: error: unknown argument: '-fpreprocessed' [-Wunused-command-line-argument-hard-error-in-future]
+clang: note: this will be a hard error (cannot be downgraded to a warning) in the future
+</code></pre>
+
+<p>Xcode 5.1 <a href="https://developer.apple.com/library/mac/releasenotes/DeveloperTools/RN-Xcode/Introduction/Introduction.html">릴리즈 노트</a>를 찾아보니 아래와 같이 적혀 있다.</p>
+
+<blockquote><p>The Apple LLVM compiler in Xcode 5.1 treats unrecognized command-line options as errors. This issue has been seen when building both Python native extensions and Ruby Gems, where some invalid compiler options are currently specified.
+Projects using invalid compiler options will need to be changed to remove those options. To help ease that transition, the compiler will temporarily accept an option to downgrade the error to a warning:</p>
+
+<blockquote><p>-Wno-error=unused-command-line-argument-hard-error-in-future</p></blockquote>
+
+<p>Note: This option will not be supported in the future.
+To workaround this issue, set the ARCHFLAGS environment variable to downgrade the error to a warning. For example, you can install a Python native extension with:</p>
+
+<blockquote><p>$ ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future easy_install ExtensionName</p></blockquote>
+
+<p>Similarly, you can install a Ruby Gem with:</p>
+
+<blockquote><p>$ ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future gem install GemName 16214764 updated</p></blockquote></blockquote>
+
+<p>clang에서 존재하는 않는 매개변수가 사용되면 에러를 내면서 종료되도록 변경된 것이다. 지금은 우회할 수 있지만 앞으론 아애 불가능해질것이라고 단단히 겁을 준다.</p>
+
+<p>아무튼 기존 안드로이드 빌드에서 gcc에서 지원하는 매개변수를 사용하던게 clang에선 없었기 때문에 발생한 문제다.
+귀찮은 오류 매세지를 피하기 위해 다음과 같이 환경변수를 선언해주자.</p>
+
+<pre><code>export ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
