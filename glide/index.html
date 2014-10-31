@@ -390,9 +390,15 @@ public Bitmap inBitmap; // Added in API level 11
 
                 <section>
                     <h2>성능 비교</h2>
-                    <video controls autoplay class="center fragment" width="320" height="566" src="images/device-2014-10-31-232350.mp4" alt="."/>
-                    <div width=10px height=10px style="color:#ffff00">
-                    <aside>
+                    <div class="row">
+						<div class="left">
+                    		<video controls autoplay class="center fragment" width="320" height="566" src="images/device-2014-10-31-232350.mp4" alt="." />
+                    	</div>
+                    	<div class="right">
+                    		<img width=300 src="images/apk_qr.png" class="right">
+                    	</div>
+                    </div>
+                    <aside class="notes">
 Draw is the time spent building display lists in Java. It indicates how much time is spent running methods such as View.onDraw(Canvas).
 Process is the time spent by Android’s 2D renderer to execute the display lists. The more Views in your hierarchy, the more drawing commands must be executed.
 Execute is the time it took to send a frame to the compositor. This part of the graph is usually small.
@@ -441,7 +447,6 @@ Execute is the time it took to send a frame to the compositor. This part of the 
                             <td>NO</td>
 					    </tr>
 				    </table>
-                    <img width=300 src="images/apk_qr.png">
 				</section>
 
 				<section>
@@ -508,7 +513,7 @@ dependencies {
 			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
 				controls: true,
-				progress: true, 
+				progress: true,
 				history: true,
 				center: true,
 
